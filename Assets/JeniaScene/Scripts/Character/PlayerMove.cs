@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private float _speed;
+    [SerializeField] private PlayerAnimation _playerAnimation;
 
     private IInputServices _inputServices;
     private Camera _camera;
@@ -17,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
+        CameraFollow();
     }
 
     private void Update()
@@ -34,5 +36,10 @@ public class PlayerMove : MonoBehaviour
         movementVector += Physics.gravity;
 
         _characterController.Move(_speed * movementVector * Time.deltaTime);
+        _playerAnimation.StartAnimationRuning();
     }
+
+    private void CameraFollow() =>
+        _camera.GetComponent<CameraFollow>().Follow(gameObject);
+
 }
