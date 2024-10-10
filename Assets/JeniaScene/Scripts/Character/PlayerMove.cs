@@ -25,13 +25,17 @@ public class PlayerMove : MonoBehaviour
     {
         Vector3 movementVector = Vector3.zero;
 
-        if (_inputServices.Axis.sqrMagnitude > 0.001f)
+        if (_inputServices.Axis.magnitude > 0.001f)
         {
             movementVector = _camera.transform.TransformDirection(_inputServices.Axis);
             movementVector.y = 0;
             movementVector.Normalize();
 
             transform.forward = movementVector;
+        }
+        else
+        {
+            _playerAnimation.StopAnim();
         }
         movementVector += Physics.gravity;
 

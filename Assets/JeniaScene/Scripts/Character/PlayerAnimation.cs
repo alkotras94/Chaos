@@ -11,6 +11,11 @@ public class PlayerAnimation : MonoBehaviour
 
     public void StartAnimationRuning()
     {
-        _animator.SetFloat("Speed", _characterController.velocity.sqrMagnitude, 0.1f, Time.deltaTime);
+        _animator.SetFloat("Speed", _characterController.velocity.magnitude, 0.1f, Time.deltaTime);
+    }
+
+    public void StopAnim()
+    {
+        _animator.StopPlayback();
     }
 }
