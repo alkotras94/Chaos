@@ -5,17 +5,16 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private CharacterController _characterController;
 
-    private const string CollectResources = nameof(CollectResources);
+    private const string Walking = "Walking";
 
-    public void StartAnimationRuning()
+    public void StartAnimationWalking()
     {
-        _animator.SetFloat("Speed", _characterController.velocity.magnitude, 0.1f, Time.deltaTime);
+        _animator.SetBool(Walking, true);
     }
 
     public void StopAnim()
     {
-        _animator.StopPlayback();
+        _animator.SetBool(Walking, false);
     }
 }

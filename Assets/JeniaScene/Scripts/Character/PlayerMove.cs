@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
         movementVector += Physics.gravity;
 
         _characterController.Move(_speed * movementVector * Time.deltaTime);
-        _playerAnimation.StartAnimationRuning();
+        //_playerAnimation.StartAnimationRuning();
     }
 
     private void CameraFollow() =>
